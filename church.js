@@ -42,5 +42,22 @@ const isZero = n => n(x => False)(True)
 const lessEq = m => n => isZero(sub(m)(n))
 const eq = m => n => And(lessEq(m)(n))(lessEq(n)(m))
 
-output( decodeBoolean(eq(nine)(nine)))
-output( decodeNumber(sub(one)(three)) )
+// Church Pairs
+const pair   = x => y => z => z(x)(y)
+const first  = p => p( x => y => x )
+const second = p => p( x => y => y )
+
+// Church Pair list encodings
+const nil    = pair(True)(True)
+const isNil  = first
+const cons   = h => t => pair(False(pair(h)(t)))
+const head   = z => first(second(z))
+const tail   = z => second(second(z))
+
+// Throws Uncaught RangeError: Maximum call stack size exceeded
+const div = n => ((f => (x =>x (x)) (x => f(x(x))))( c => n => m => f => x => (d => (n => n( x => (a => b => b))(a => b => a))(d)((f => x => x)(f)(x)) (f(c(d)(m)(f)(x))))((m => n => n(n => f => x => n(g => h => h(g(f)))(u => x)(u => u))(m))(n)(m) )))((n => f => x => f(n(f)(x)))(n))
+
+// implement fact, Y combinator 
+
+output( decodeBoolean(div(nine)(three)))
+output( decodeNumber(pred(eight)) )
