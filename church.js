@@ -61,7 +61,7 @@ const tail   = z => second(second(z))
 const S = x => y => z => x(z)(y(z))
 const K = x => y => x
 const I = x => x
-const Y = f => x = f(v => x(x)(v))(x => f(v => x(x)(v)))
+const Y = f => x => f(v => x(x)(v))(x => f(v => x(x)(v)))
 
 // General Math use without combinators, reductions or raw lambda
 const Fib = rec => n => If(lessEq(n)(one))(one)(x => add(rec(sub(n)(one)))(rec(sub(n)(two)))(x))
