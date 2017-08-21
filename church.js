@@ -58,12 +58,15 @@ const tail   = z => second(second(z))
 
 // Combinators
 
-//const I = 
-//const S = 
-//const K = 
-//const Y = 
-//
-//const Fib = 
+const S = x => y => z => x(z)(y(z))
+const K = x => y => x
+const I = x => x
+const Y = f => x = f(v => x(x)(v))(x => f(v => x(x)(v)))
 
+// General Math use without combinators, reductions or raw lambda
+const Fib = rec => n => If(lessEq(n)(one))(one)(x => add(rec(sub(n)(one)))(rec(sub(n)(two)))(x))
+const Fac = n => If(isZero(n))(_ => one)(mul(n)(Fac(pred(n))))
+
+// Try for your own, like this:
 output( decodeBoolean(add(nine)(three)))
 output( decodeNumber(pred(eight)) )
