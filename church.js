@@ -22,10 +22,12 @@ const succ = n => f => x => f(n(f)(x))
 const pred = n => f => x => n( g => h => h(g(f)) )(u => x)(u => u)
 
 // Math Operations
-const add = m => n => f => x => m(f(n(f)(x)))
+const add = m => n => f => x => m(f)(n(f)(x))
 const sub = m => n => (n(pred))(m)
 const mul = m => n => f => m(n(f))
 const exp = m => n => n(m)
+// Throws Uncaught RangeError: Maximum call stack size exceeded:
+const div = n => ((f => (x =>x (x)) (x => f(x(x))))( c => n => m => f => x => (d => (n => n( x => (a => b => b))(a => b => a))(d)((f => x => x)(f)(x)) (f(c(d)(m)(f)(x))))((m => n => n(n => f => x => n(g => h => h(g(f)))(u => x)(u => u))(m))(n)(m) )))((n => f => x => f(n(f)(x)))(n))
 
 // Booleans
 const True  = a => b => a
@@ -54,10 +56,14 @@ const cons   = h => t => pair(False(pair(h)(t)))
 const head   = z => first(second(z))
 const tail   = z => second(second(z))
 
-// Throws Uncaught RangeError: Maximum call stack size exceeded
-const div = n => ((f => (x =>x (x)) (x => f(x(x))))( c => n => m => f => x => (d => (n => n( x => (a => b => b))(a => b => a))(d)((f => x => x)(f)(x)) (f(c(d)(m)(f)(x))))((m => n => n(n => f => x => n(g => h => h(g(f)))(u => x)(u => u))(m))(n)(m) )))((n => f => x => f(n(f)(x)))(n))
+// Combinators
 
-// implement fact, Y combinator 
+//const I = 
+//const S = 
+//const K = 
+//const Y = 
+//
+//const Fib = 
 
-output( decodeBoolean(div(nine)(three)))
+output( decodeBoolean(add(nine)(three)))
 output( decodeNumber(pred(eight)) )
