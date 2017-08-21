@@ -68,5 +68,5 @@ const Fib = rec => n => If(lessEq(n)(one))(one)(x => add(rec(sub(n)(one)))(rec(s
 const Fac = n => If(isZero(n))(_ => one)(mul(n)(Fac(pred(n))))
 
 // Try for your own, like this:
-output( decodeBoolean(add(nine)(three)))
-output( decodeNumber(pred(eight)) )
+output( decodeNumber(add(nine)(three)))
+output( decodeBoolean(Not(True)) )
