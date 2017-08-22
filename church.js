@@ -57,11 +57,14 @@ const head   = z => first(second(z))
 const tail   = z => second(second(z))
 
 // Combinators
-
 const S = x => y => z => x(z)(y(z))
 const K = x => y => x
 const I = x => x
 const Y = f => x => f(v => x(x)(v))(x => f(v => x(x)(v)))
+const U = f => f(f)
+const B = S => (K(S))(K)
+const C = S => (B(B)(S))(K(K))
+const V = x => y => z => z(x)(y);
 
 // General Math use without combinators, reductions or raw lambda
 const Fib = rec => n => If(lessEq(n)(one))(one)(x => add(rec(sub(n)(one)))(rec(sub(n)(two)))(x))
