@@ -53,11 +53,13 @@ const first  = p => p( x => y => x )
 const second = p => p( x => y => y )
 
 // Church Pair list encodings
-const nil    = pair(True)(True)
-const isNil  = first
-const cons   = h => t => pair(False(pair(h)(t)))
-const head   = z => first(second(z))
-const tail   = z => second(second(z))
+const nil   = pair(True)(True)
+const isNil = first
+const head  = z => first(second(z))
+const tail  = z => second(second(z))
+const cons  = h => t => pair(False(pair(h)(t)))
+const car   = z => head(z);
+const cadr  = z => head(tail(z));
 
 // Combinators
 const S = x => y => z => x(z)(y(z))
